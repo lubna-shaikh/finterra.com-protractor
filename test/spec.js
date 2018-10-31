@@ -1,4 +1,7 @@
+var homePagetd = require('./testdata/homePage.js')
 var login = require('./common/login.js');
+var register = require('./common/register.js');
+var registertd = require('./testdata/register.js')
 
 
 describe('Protractor Demo App', function () {
@@ -21,5 +24,20 @@ describe('Protractor Demo App', function () {
                 if (isSuccess) return done();
             });
     });
+
+    it('Should register with valid details, through the Home page', (done) => {
+        // return browser.driver.findElement(by.css('.home-content .mat-chip-list-wrapper .mat-chip:nth-child(2)')).click()
+        browser.driver.findElement(by.css(homePagetd.homePage.buttonLocator.register)).click()
+            //  return browser.sleep(5000)
+            .then(() => {
+                return browser.driver.wait(EC.urlContains(registertd.registerdet.valid.url), 15000);
+            })
+            .then(() => {
+                return register.register1()
+            })
+            .then(isSuccess => {
+                if (isSuccess) return done();
+            });
+    })
 
 });
