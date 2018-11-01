@@ -3,6 +3,7 @@ var login = require('./common/login.js');
 var register = require('./common/register.js');
 var registertd = require('./testdata/register.js')
 var flight = require('./common/flight.js')
+var mobileTop = require('./common/mobileTop.js')
 
 
 describe('Protractor Demo App', function () {
@@ -42,17 +43,43 @@ describe('Protractor Demo App', function () {
     //         });
     // })
 
-    it('Should search for Return Flights, succesfully', (done) => {
-        return flight.goToFlight()
+    // it('Should search for Return Flights, succesfully', (done) => {
+    //     return flight.goToFlight()
+    //         .then(() => {
+    //             return flight.returnFlight()
+
+    //         })
+    //         .then(isSuccess => {
+
+    //             if (isSuccess) return done();
+    //         });
+
+    // })
+
+    it('Should search verify the functionality of Mobile Topup', (done) => {
+        // return flight.goToFlight()
+        //     .then(() => {
+        //         return flight.returnFlight()
+
+        //     })
+        //     .then(isSuccess => {
+
+        //         if (isSuccess) return done();
+        //     });
+        // this.timeout(5000)
+        return mobileTop.goToMobileTop()
             .then(() => {
-                return flight.returnFlight()
-
+                return mobileTop.selectCountryAndNext()
             })
-            .then(isSuccess => {
-
-                if (isSuccess) return done();
-            });
+            .then(() => {
+                return mobileTop.selectPackage()
+            })
+            .then((res) => {
+                if (res)
+                    return done();
+            })
 
     })
+
 
 });
