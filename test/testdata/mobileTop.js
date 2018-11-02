@@ -13,7 +13,10 @@ mobileTop={
         packageDropdownOverlayLocator : '.cdk-overlay-pane',
         packageValue : '.cdk-overlay-pane .mat-option:nth-child(1)',
         nextBtnLocator2 : '.fuse-widget-front button+button:nth-child(2)',
-        collectNowLabel : '#collect-now'
+        collectNowLabel : '#collect-now',
+        confirmBtnLocator1 : '.transaction-section+div+div button:nth-child(3)',
+        finterraPaymentLocator : '.welcome-message:first',
+        confirmBtnLocator2 : '.cdk-overlay-pane .mat-raised-button.mat-accent',
 
 
     }

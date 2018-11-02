@@ -22,9 +22,8 @@
 
  }
 
- mobileTop.prototype.selectPackage = function () {
+ mobileTop.prototype.selectPackageAndNext = function () {
      browser.sleep(3000);
-     console.log('Reference Number Locator: ', mobileToptd.mobileTop.valid.referenceNumLocator)
      return browser.driver.findElement(by.css(mobileToptd.mobileTop.valid.referenceNumLocator)).click()
          .then(() => {
              browser.sleep(3000);
@@ -34,31 +33,31 @@
              browser.sleep(3000);
              browser.driver.findElement(by.css(mobileToptd.mobileTop.valid.packageDropdownLocator)).click()
              browser.sleep(3000);
-            //  browser.driver.findElement(by.css(mobileToptd.mobileTop.valid.packageDropdownLocator)).click()
-            //  browser.sleep(3000);
-            //  browser.driver.findElement(by.css(mobileToptd.mobileTop.valid.packageDropdownLocator)).click()
-            //  browser.sleep(3000);
              return browser.driver.findElement(by.css(mobileToptd.mobileTop.valid.packageDropdownLocator)).click()
-         })
-         .then(() => {
-            
-             return browser.driver.findElement(by.css(mobileToptd.mobileTop.valid.packageValue)).click()
 
          })
          .then(() => {
-            console.log('package value clicked')
-            browser.sleep(3000)
-             return browser.driver.findElement(by.css(mobileToptd.mobileTop.valid.nextBtnLocator2)).click()
+             browser.sleep(2000);
+             return browser.driver.findElement(by.css(mobileToptd.mobileTop.valid.packageValue)).click()
          })
-         .then(() => {
-             return browser.driver.findElement(by.css(flighttd.flight.valid.collectNowLabel)).isDisplayed()
-         })
-         .then(() => {
-             browser.sleep(3000);
-             return true;
+         .then(()=>{
+            browser.sleep(2000)
+            return browser.driver.findElement(by.css(mobileToptd.mobileTop.valid.nextBtnLocator2)).click()
          })
  }
 
+ mobileTop.prototype.reviewAndSend = function () {
+     browser.sleep(3000)
+     return browser.driver.findElement(by.css(mobileToptd.mobileTop.valid.confirmBtnLocator1)).click()
+ }
+ mobileTop.prototype.reviewAndSend = function () {
+     browser.sleep(10000)
+     return browser.driver.findElement(by.css(mobileToptd.mobileTop.valid.finterraPaymentLocator)).click()
 
+         .then(() => {
+             browser.sleep(5000)
+             return true;
+         })
+ }
 
  module.exports = new mobileTop();

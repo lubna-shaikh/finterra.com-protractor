@@ -57,29 +57,22 @@ describe('Protractor Demo App', function () {
     // })
 
     it('Should search verify the functionality of Mobile Topup', (done) => {
-        // return flight.goToFlight()
-        //     .then(() => {
-        //         return flight.returnFlight()
-
-        //     })
-        //     .then(isSuccess => {
-
-        //         if (isSuccess) return done();
-        //     });
-        // this.timeout(5000)
-        return mobileTop.goToMobileTop()
+        return login.login1()
+            .then(() => {
+                return mobileTop.goToMobileTop()
+            })
             .then(() => {
                 return mobileTop.selectCountryAndNext()
             })
             .then(() => {
-                return mobileTop.selectPackage()
+                return mobileTop.selectPackageAndNext()
+            })
+            .then(() => {
+                return mobileTop.reviewAndSend()
             })
             .then((res) => {
                 if (res)
                     return done();
             })
-
-    })
-
-
+    }, 60000)
 });
